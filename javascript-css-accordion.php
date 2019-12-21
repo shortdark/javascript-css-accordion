@@ -106,12 +106,6 @@ function accordionDisplay(id) {
 }
 
 
-<div onclick="accordionDisplay('FAQ1')" class="sscustom-block-wrap"><span class="sscustom-btn sscustom-block sscustom-black sscustom-left-align">How much does a mobile app cost?<span class="FAQ1-plus ss-symbol" style="display: inline;">+</span><span class="FAQ1-minus ss-symbol" style="display: none;">-</span></span>
-<div id="FAQ1" class="sscustom-container sscustom-hide">
-A mobile app generally can cost anywhere upwards of £5,000 very much dependant on design, functionality, framework used and the size of the development team. Each costing is bespoke to the requirements of the project.
-</div>
-</div>
-
 // This assembles the plugin page.
 function jca_add_to_content($content) {
     $content .= '<div onclick="accordionDisplay(\'FAQ1\')" class="sscustom-block-wrap"><span class="sscustom-btn sscustom-block sscustom-black sscustom-left-align">Test title<span class="FAQ1-plus ss-symbol" style="display: inline;">+</span><span class="FAQ1-minus ss-symbol" style="display: none;">-</span></span>
