@@ -3,7 +3,7 @@
 Contributors: shortdark
 Donate link: http://www.shortdark.net/
 Tags: html, accordion
-Requires at least: 3.5
+Requires at least: 2.5
 Tested up to: 5.3.2
 Stable tag: trunk
 License: GPLv2 or later
@@ -26,7 +26,14 @@ This section describes how to install the plugin and get it working.
 1. Upload the plugin folder to the `/wp-content/plugins/` directory, or install the plugin through the WordPress
 plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. A test is now added to every post of your website.
+
+To add an accordion element you insert the shortcode below into your post in the place you'd like the accordion to be.
+
+[sdjca id="" title="" content=""]
+
+If you have more than one accordion on a page, each accordion must have a unique id.
+The title is the text you'd see when the accordion is closed.
+The content is what you see when you open the accordion.
 
 == Changelog ==
 
