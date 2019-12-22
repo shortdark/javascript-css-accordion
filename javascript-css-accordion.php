@@ -22,8 +22,8 @@ defined('ABSPATH') or die('No script kiddies please!');
  ** ASSEMBLE THE PAGE
  **********************/
 
-add_action('wp_head', 'jca_add_to_head');
-function jca_add_to_head() {
+add_action('wp_head', 'sdjca_add_to_head');
+function sdjca_add_to_head() {
     echo '<style>
 .sscustom-container, .sscustom-panel {
     padding: 25px 16px;
@@ -83,8 +83,8 @@ function jca_add_to_head() {
 </style>';
 }
 
-add_action('wp_footer', 'jca_add_to_footer');
-function jca_add_to_footer() {
+add_action('wp_footer', 'sdjca_add_to_footer');
+function sdjca_add_to_footer() {
     echo '<script type=\'text/javascript\'>
 function accordionDisplay(id) {
   var x = document.getElementById(id);
@@ -105,24 +105,23 @@ function accordionDisplay(id) {
 </script>';
 }
 
-
-// This assembles the plugin page.
-function jca_add_to_content($content) {
-    $content .= '<div onclick="accordionDisplay(\'FAQ1\')" class="sscustom-block-wrap"><span class="sscustom-btn sscustom-block sscustom-black sscustom-left-align">Test title<span class="FAQ1-plus ss-symbol" style="display: inline;">+</span><span class="FAQ1-minus ss-symbol" style="display: none;">-</span></span>
-<div id="FAQ1" class="sscustom-container sscustom-hide">
-Test content!
-</div>
-</div>';
-    return $content;
+// This adds the content from the shortcode onto the page
+function sdjca_add_content_from_shortcode( $atts, $content = null ) {
+        ob_start();
+        ?><div onclick="accordionDisplay('FAQ<?php echo $atts['id']; ?>')" class="sscustom-block-wrap">
+<span class="sscustom-btn sscustom-block sscustom-black sscustom-left-align"><?php echo $atts['title']; ?><span class="FAQ<?php echo $atts['id']; ?>-plus ss$
+<div id="FAQ<?php echo $atts['id']; ?>" class="sscustom-container sscustom-hide"><?php echo $atts['content']; ?></div>
+</div><?php
+        return ob_get_clean();
 }
-// Add HTML to Page the content.
-add_filter('the_content', 'jca_add_to_content');
+add_shortcode( 'sdjca', 'sdjca_add_content_from_shortcode' );
+
 
 
 /****************************
  ** LOAD PLUGIN TEXT DOMAIN
  ****************************/
-function sdatf_load_textdomain() {
-    load_plugin_textdomain('add-target-fixer', false, dirname(plugin_basename(__FILE__)) . '/languages');
+function sdjca_load_textdomain() {
+    load_plugin_textdomain('javascript-css-accordion', false, dirname(plugin_basename(__FILE__)) . '/languages');
 }
-add_action('init', 'sdatf_load_textdomain');
+add_action('init', 'sdjca_load_textdomain');
