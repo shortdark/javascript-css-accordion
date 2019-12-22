@@ -31,9 +31,9 @@ To add an accordion element you insert the shortcode below into your post in the
 
 [sdjca id="" title="" content=""]
 
-If you have more than one accordion on a page, each accordion must have a unique id.
-The title is the text you'd see when the accordion is closed.
-The content is what you see when you open the accordion.
+* The id should be a number (an integer). If you have more than one accordion on a page, each accordion must have a unique id.
+* The title is the text you'd see when the accordion is closed, without any HTML.
+* The content is what you see when you open the accordion, without any HTML.
 
 == Changelog ==
 

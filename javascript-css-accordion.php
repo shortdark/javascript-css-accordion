@@ -107,11 +107,25 @@ function accordionDisplay(id) {
 
 // This adds the content from the shortcode onto the page
 function sdjca_add_content_from_shortcode( $atts, $content = null ) {
-        ob_start();
-        ?><div onclick="accordionDisplay('FAQ<?php echo $atts['id']; ?>')" class="sscustom-block-wrap">
-<span class="sscustom-btn sscustom-block sscustom-black sscustom-left-align"><?php echo $atts['title']; ?><span class="FAQ<?php echo $atts['id']; ?>-plus ss$
-<div id="FAQ<?php echo $atts['id']; ?>" class="sscustom-container sscustom-hide"><?php echo $atts['content']; ?></div>
-</div><?php
+    $id = intval($atts['id']);
+    $title = filter_var($atts['title'], FILTER_SANITIZE_STRING);
+    $content = filter_var($atts['content'], FILTER_SANITIZE_STRING);
+
+    if(0 >= $id){
+        $id = random_int(999,9999);
+    }
+    
+    ob_start();
+    if(0 < strlen($title) && 0 < strlen($content)){
+        ?>
+        <div onclick="accordionDisplay('FAQ<?php echo $id; ?>')" class="sscustom-block-wrap">
+            <span class="sscustom-btn sscustom-block sscustom-black sscustom-left-align"><?php echo $title; ?>
+                <span class="FAQ<?php echo $id; ?>-plus ss-symbol" style="display: inline;">+</span>
+                <span class="FAQ<?php echo $id; ?>-plus ss-symbol" style="display: inline;">-</span>
+            </span>
+            <div id="FAQ<?php echo $id; ?>" class="sscustom-container sscustom-hide"><?php echo $content; ?></div>
+        </div><?php
+    }
         return ob_get_clean();
 }
 add_shortcode( 'sdjca', 'sdjca_add_content_from_shortcode' );
