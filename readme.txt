@@ -4,12 +4,13 @@ Contributors: shortdark
 Donate link: http://www.shortdark.net/
 Tags: html, accordion
 Requires at least: 2.5
-Tested up to: 5.3.2
+Tested up to: 5.8.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds an accordion using plaing javascript and CSS, not jQuery.
+Adds an accordion using plain javascript and CSS, not jQuery.
+Tested on PHP 5 through PHP 8.
 
 == Description ==
 
@@ -29,13 +30,47 @@ plugins screen directly.
 
 To add an accordion element you insert the shortcode below into your post in the place you'd like the accordion to be.
 
-[sdjca id="" title="" content=""]
+= Method 1 =
+
+[sdjca id="" title=""]The content to be revealed goes here!![/sdjca]
+
+* The id should be a number (an integer). If you have more than one accordion on a page, each accordion must have a unique id.
+* The title is the text you'd see when the accordion is closed, without any HTML.
+* The content is what you see when you open the accordion, this can include HTML tags. Do not use "p" tags, use "br" instead.
+
+= Method 2 =
+
+You can also use unenclosed shortcodes like this...
+
+[sdjca id="" title="" content="" /]
 
 * The id should be a number (an integer). If you have more than one accordion on a page, each accordion must have a unique id.
 * The title is the text you'd see when the accordion is closed, without any HTML.
 * The content is what you see when you open the accordion, without any HTML.
+* The shortcode should have the trailing / at the end, especially if you are using more than one accordion in your post/page.
 
 == Changelog ==
+
+= 0.0.06 =
+
+* Bugfix: tweak to the javascript.
+
+= 0.0.05 =
+
+* Bugfix: version number.
+
+= 0.0.04 =
+
+* Bugfix: only show enclosed content if the content attribute does not exist.
+* Update: update to the installation instructions.
+
+= 0.0.03 =
+
+* Bugfix to allow the first version of the plugin to continue working.
+
+= 0.0.02 =
+
+* Allowed content to be added using enclosed shortcodes.
 
 = 0.0.01 =
 

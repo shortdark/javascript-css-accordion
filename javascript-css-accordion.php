@@ -1,13 +1,13 @@
 <?php
 /**
  * @package javascript-css-accordion
- * @version 0.0.01
+ * @version 0.0.06
  * Plugin Name: Javascript CSS Accordion
  * Plugin URI: http://www.shortdark.net/wordpress-plugin/javascript-css-accordion/
  * Description: This WordPress plugin allows the user to create an accordion on their website that uses plain javascript, not jQuery.
  * Author: Neil Ludlow
  * Text Domain: javascript-css-accordion
- * Version: 0.0.01
+ * Version: 0.0.06
  * Author URI: http://www.shortdark.net/
  */
 
@@ -109,10 +109,12 @@ function accordionDisplay(id) {
 function sdjca_add_content_from_shortcode( $atts, $content = null ) {
     $id = intval($atts['id']);
     $title = filter_var($atts['title'], FILTER_SANITIZE_STRING);
-    $content = filter_var($atts['content'], FILTER_SANITIZE_STRING);
+    if(0<strlen($atts['content'])){
+        $content = filter_var($atts['content'], FILTER_SANITIZE_STRING);
+    }
 
     if(0 >= $id){
-        $id = random_int(999,9999);
+        $id = mt_rand(999,9999);
     }
     
     ob_start();
@@ -121,7 +123,7 @@ function sdjca_add_content_from_shortcode( $atts, $content = null ) {
         <div onclick="accordionDisplay('FAQ<?php echo $id; ?>')" class="sscustom-block-wrap">
             <span class="sscustom-btn sscustom-block sscustom-black sscustom-left-align"><?php echo $title; ?>
                 <span class="FAQ<?php echo $id; ?>-plus ss-symbol" style="display: inline;">+</span>
-                <span class="FAQ<?php echo $id; ?>-plus ss-symbol" style="display: inline;">-</span>
+                <span class="FAQ<?php echo $id; ?>-minus ss-symbol" style="display: none;">-</span>
             </span>
             <div id="FAQ<?php echo $id; ?>" class="sscustom-container sscustom-hide"><?php echo $content; ?></div>
         </div><?php
